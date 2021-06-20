@@ -3,8 +3,8 @@ import os
 from PIL import Image
 import numpy as np
  
-video_path = 'D:/Test/Results/2.mp4'
-data_path = 'D:/Test/data'
+video_path = 'Results/2.mp4'
+data_path = 'data'
  
 cam = cv2.VideoCapture(video_path)
 try:

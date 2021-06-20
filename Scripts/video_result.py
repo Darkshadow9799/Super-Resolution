@@ -5,7 +5,7 @@ import numpy as np
 from tqdm import tqdm
 import glob
 
-image_folder='D:/Test/data_clean'
+image_folder='data_clean'
 #data_clean_path = 'D:/Test/data_clean'
 
 fps=30

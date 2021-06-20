@@ -10,9 +10,9 @@ model = RRDN(weights='gans')
 
 ''' -----------------------------------------------------------------------------------'''
 
-video_path = 'D:/Test/Results/2.mp4'
-data_path = 'D:/Test/data'
-data_clean_path = 'D:/Test/data_clean'
+video_path = 'Results/2.mp4'
+data_path = 'Test/data'
+data_clean_path = 'data_clean'
 
 ''' -----------------------------------------------------------------------------------'''
 

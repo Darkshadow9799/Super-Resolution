@@ -9,8 +9,8 @@ from ISR.models import RDN, RRDN
 #model = RRDN(weights='gans')
 model = RDN(weights='psnr-small')
 
-data_path = 'D:/Test/data'
-data_clean_path = 'D:/Test/data_clean'
+data_path = 'data'
+data_clean_path = 'data_clean'
 
 ''' ============================================================================ '''
 

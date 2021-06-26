@@ -1,6 +1,7 @@
 # Super-Resolution
 Image and Video Super Resolution
 > Aayush Jain
+* Image and Video super-resolution using Generative Adverserial Network (GAN).
 
 ## How to use it:
 * Install packages from requirements.txt or requirements-gpu.txt file as per convinence.

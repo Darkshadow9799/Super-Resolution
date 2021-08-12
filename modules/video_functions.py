@@ -31,7 +31,7 @@ def gen_image(video_path, data_path):
     except:
         print("Generate Image Failure")
 
-def predict_gen_image(model, data_path, data_clean_path):
+def predict_gen_image(model, data_path, data_clean_path, height, width):
     try:
         if not os.path.exists(data_clean_path):
             os.makedirs(data_clean_path)
@@ -45,7 +45,7 @@ def predict_gen_image(model, data_path, data_clean_path):
         for _ in tqdm(range(counter)):
             #print('COUNT: ', count)
             img = Image.open(data_path + '/frame'+ str(count) + '.png')
-            img = img.resize((480, 270))
+            img = img.resize((height, width))
             sr_img = model.predict(np.array(img), by_patch_of_size=50)
             sr_img = Image.fromarray(sr_img)
             sr_img.save(data_clean_path + '/' + str(count) + '.png')

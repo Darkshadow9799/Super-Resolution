@@ -47,17 +47,40 @@ Steps:
 
 from ISR.models import RDN, RRDN
 from modules import audio_functions, video_functions
+
+
 # All path files input:
-video_path = './Results/1.mp4' # input()
+# video_path = './Results/1.mp4' # input()
 final_video_path = './Results/final.mp4' # input()
 audio_path = './Results/extrated_audio.mp3'
 data_path = './data3'
 data_clean_path = './data_clean3'
 result_video_path = './Results/video.mp4'
 
-model = RDN(weights='psnr-small')
-audio_functions.extraction(audio_path, video_path)
-video_functions.gen_image(video_path, data_path)
-video_functions.predict_gen_image(model, data_path, data_clean_path)
-video_functions.video_result(data_clean_path, result_video_path)
-audio_functions.merger(audio_path, result_video_path, final_video_path)
+
+parser = argparse.ArgumentParser(discrpition='Image Super Resolution')
+parser.add_argument("video_path", type=String, help="Image \ Video Path")
+parser.add_argument("height", type=int, help="Height")
+parser.add_argument("width", type=int, help="Width")
+parser.add_argument("option", type=String, help="Option: 2x or 4x")
+
+args = parser.parse_args()
+
+video_path = args.video_path
+height = args.height
+width = args.width
+option_for_2x_or_4x = args.option
+
+if option_for_2x_or_4x == 1 or option_for_2x_or_4x == 2: 
+    if (option_for_2x_or_4x == 1):
+        model = RDN(weights='psnr-small')
+    elif (option_for_2x_or_4x == 2):
+        model = RRDN(weights='gans')
+    audio_functions.extraction(audio_path, video_path)
+    video_functions.gen_image(video_path, data_path)
+    video_functions.predict_gen_image(model, data_path, data_clean_path, height, width)
+    video_functions.video_result(data_clean_path, result_video_path)
+    audio_functions.merger(audio_path, result_video_path, final_video_path)
+
+else:
+    print("Improper option choosen!!")

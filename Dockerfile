@@ -1,15 +1,19 @@
-#FROM ubuntu
+#FROM python:3.7.9-slim
+FROM ubuntu:18.04
 
-#RUN apt-get update && apt-get install --assume-yes --fix-missing python-pip git
+ENV PATH="/root/miniconda3/bin:${PATH}"
+ENV PATH="/root/miniconda3/bin:${PATH}"
 
-#RUN git clone https://github.com/Darkshadow9799/Super-Resolution.git
-FROM python:3.6.6-slim
+RUN apt update \
+	&& apt install -y htop python3-7 wget python3-pip
 
-RUN pip install -r requirements-gpu.
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7
+RUN alias python=python3
+RUN alias pip=pip3
+
+COPY . /app/
+WORKDIR /app/
+
+RUN pip install -r requirements-gpu.txt4
 RUN pip install argparse
-
-COPY "entry.sh"
-
-RUN ["chmod", "+x", "./run.sh"]
-
-ENTRYPOINT ["entry.sh"]
+RUN chmod 755 entry.sh

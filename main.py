@@ -47,6 +47,7 @@ Steps:
 
 from ISR.models import RDN, RRDN
 from modules import audio_functions, video_functions
+import argparse
 
 
 # All path files input:
@@ -58,14 +59,14 @@ data_clean_path = './data_clean3'
 result_video_path = './Results/video.mp4'
 
 
-parser = argparse.ArgumentParser(discrpition='Image Super Resolution')
+parser = argparse.ArgumentParser(description='Image Super Resolution')
 parser.add_argument("video_path", type=String, help="Image \ Video Path")
 parser.add_argument("height", type=int, help="Height")
 parser.add_argument("width", type=int, help="Width")
 parser.add_argument("option", type=String, help="Option: 2x or 4x")
 
-args = parser.parse_args()
-
+#args = parser.parse_args()
+args, unknown = parser.parse_known_args()
 video_path = args.video_path
 height = args.height
 width = args.width

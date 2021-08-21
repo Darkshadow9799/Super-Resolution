@@ -1,3 +1,2 @@
-read location height width option
-option=${option:-`2x`}
-python main.py $location $height $width $option
+#!/bin/sh
+python main.py --location "./Results/1.mp4" --height 540 --width 960 --option "2x"
